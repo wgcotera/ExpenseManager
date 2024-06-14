@@ -1,11 +1,13 @@
 using ExpenseManager.Domain.Common.Models;
-using ExpenseManager.Domain.Period.ValueObjects;
-using ExpenseManager.Domain.User.ValueObjects;
+using ExpenseManager.Domain.PeriodAggregate.ValueObjects;
+using ExpenseManager.Domain.RecurringTransactionConfigurationAggregate.ValueObjects;
+using ExpenseManager.Domain.UserAggregate.ValueObjects;
 
-namespace ExpenseManager.Domain.User;
+namespace ExpenseManager.Domain.UserAggregate;
 public class User : AggregateRoot<UserId>
 {
     private List<PeriodId> _periodIds = new();
+    private List<RecurringTransactionConfigurationId> _recurringTransactionConfigurationIds = new();
 
     public string FirstName { get; }
     public string LastName { get; }
@@ -17,6 +19,7 @@ public class User : AggregateRoot<UserId>
     public DateTime UpdatedDateTime { get; }
 
     public IReadOnlyList<PeriodId> PeriodIds => _periodIds.AsReadOnly();
+    public IReadOnlyList<RecurringTransactionConfigurationId> RecurringTransactionConfigurationIds => _recurringTransactionConfigurationIds.AsReadOnly();
 
     private User(
         UserId userId,

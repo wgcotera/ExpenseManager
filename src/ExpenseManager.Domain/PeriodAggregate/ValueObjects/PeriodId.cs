@@ -1,6 +1,6 @@
 using BuberDinner.Domain.Common.Models;
 
-namespace ExpenseManager.Domain.Period.ValueObjects;
+namespace ExpenseManager.Domain.PeriodAggregate.ValueObjects;
 public class PeriodId : ValueObject
 {
     public Guid Value { get; }

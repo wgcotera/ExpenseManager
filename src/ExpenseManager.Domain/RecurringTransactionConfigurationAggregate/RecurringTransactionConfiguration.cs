@@ -1,14 +1,15 @@
+using ExpenseManager.Domain.Common.Enum;
 using ExpenseManager.Domain.Common.Models;
 using ExpenseManager.Domain.Common.ValueObjects;
-using ExpenseManager.Domain.RecurringTransactionConfiguration.ValueObjects;
-using ExpenseManager.Domain.User.ValueObjects;
+using ExpenseManager.Domain.RecurringTransactionConfigurationAggregate.ValueObjects;
+using ExpenseManager.Domain.UserAggregate.ValueObjects;
 
 namespace ExpenseManager.Domain.RecurringTransactionConfiguration;
 public class RecurringTransactionConfiguration : AggregateRoot<RecurringTransactionConfigurationId>
 {
     public UserId UserId { get; }
     public TransactionType TransactionType { get; }
-    public float Amount { get; }
+    public Amount Amount { get; }
     public string Description { get; }
 
     public DateTime StartDate { get; }
@@ -22,7 +23,7 @@ public class RecurringTransactionConfiguration : AggregateRoot<RecurringTransact
         RecurringTransactionConfigurationId recurringTransactionConfigurationId,
         UserId userId,
         TransactionType transactionType,
-        float amount,
+        Amount amount,
         string description,
         DateTime startDate,
         DateTime? endDate,
@@ -44,7 +45,7 @@ public class RecurringTransactionConfiguration : AggregateRoot<RecurringTransact
     public static RecurringTransactionConfiguration Create(
         UserId userId,
         TransactionType transactionType,
-        float amount,
+        Amount amount,
         string description,
         DateTime startDate,
         DateTime? endDate,

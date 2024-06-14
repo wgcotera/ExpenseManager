@@ -1,6 +1,6 @@
 using BuberDinner.Domain.Common.Models;
 
-namespace ExpenseManager.Domain.Transaction.ValueObjects;
+namespace ExpenseManager.Domain.TransactionAggregate.ValueObjects;
 public class TransactionId : ValueObject
 {
     public Guid Value { get; }

@@ -1,8 +1,8 @@
 using ExpenseManager.Domain.Common.Models;
-using ExpenseManager.Domain.Period.ValueObjects;
-using ExpenseManager.Domain.Transaction.ValueObjects;
+using ExpenseManager.Domain.PeriodAggregate.ValueObjects;
+using ExpenseManager.Domain.TransactionAggregate.ValueObjects;
 
-namespace ExpenseManager.Domain.Period;
+namespace ExpenseManager.Domain.PeriodAggregate;
 public class Period : AggregateRoot<PeriodId>
 {
     private readonly List<TransactionId> _transactionIds = new();

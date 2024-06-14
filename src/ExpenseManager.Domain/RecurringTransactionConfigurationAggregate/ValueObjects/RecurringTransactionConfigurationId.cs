@@ -1,6 +1,6 @@
 using BuberDinner.Domain.Common.Models;
 
-namespace ExpenseManager.Domain.RecurringTransactionConfiguration.ValueObjects;
+namespace ExpenseManager.Domain.RecurringTransactionConfigurationAggregate.ValueObjects;
 
 public class RecurringTransactionConfigurationId : ValueObject
 {

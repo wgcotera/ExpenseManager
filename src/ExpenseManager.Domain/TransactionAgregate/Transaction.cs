@@ -1,16 +1,17 @@
+using ExpenseManager.Domain.Common.Enum;
 using ExpenseManager.Domain.Common.Models;
 using ExpenseManager.Domain.Common.ValueObjects;
-using ExpenseManager.Domain.Period.ValueObjects;
-using ExpenseManager.Domain.RecurringTransactionConfiguration.ValueObjects;
-using ExpenseManager.Domain.Transaction.ValueObjects;
+using ExpenseManager.Domain.PeriodAggregate.ValueObjects;
+using ExpenseManager.Domain.RecurringTransactionConfigurationAggregate.ValueObjects;
+using ExpenseManager.Domain.TransactionAggregate.ValueObjects;
 
-namespace ExpenseManager.Domain.Transaction;
+namespace ExpenseManager.Domain.TransactionAggregate;
 public class Transaction : AggregateRoot<TransactionId>
 {
     public PeriodId PeriodId { get; }
     public RecurringTransactionConfigurationId? RecurringTransactionConfigurationId { get; }
     public TransactionType TransactionType { get; }
-    public float Amount { get; }
+    public Amount Amount { get; }
     public string Description { get; }
     public DateTime TransactionDateTime { get; }
 
@@ -22,7 +23,7 @@ public class Transaction : AggregateRoot<TransactionId>
         PeriodId periodId,
         RecurringTransactionConfigurationId? recurringTransactionConfigurationId,
         TransactionType transactionType,
-        float amount,
+        Amount amount,
         string description,
         DateTime transactionDateTime,
         DateTime createdDateTime,
@@ -42,7 +43,7 @@ public class Transaction : AggregateRoot<TransactionId>
         PeriodId periodId,
         RecurringTransactionConfigurationId? recurringTransactionConfigurationId,
         TransactionType transactionType,
-        float amount,
+        Amount amount,
         string description,
         DateTime transactionDateTime)
     {
