@@ -28,7 +28,7 @@ public class RegisterCommandHandler :
         // 1. Validate the user doesn't exist
         if (_userRepository.GetUserByEmail(command.Email) is not null)
         {
-            throw new Exception("User already exists");
+            return Domain.Common.DomainErrors.Errors.User.DuplicateEmail; 
         }
 
         // 2. Create user (generate unique ID) & Persist to DB
