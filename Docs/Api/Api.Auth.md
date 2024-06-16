@@ -37,12 +37,21 @@ POST /auth/register
 
 ```json
 {
-    "id": "d89c2d9a-eb3e-4075-95ff-b920b55aa104",
+  "user": {
     "firstName": "Bobby",
     "lastName": "Tables",
-    "userName": "bobbles",
+    "username": "boobles",
     "email": "bobbles@example.com",
-    "token": "eyJhb..z9dqcnXoY"
+    "password": "Amiko69!",
+    "createdDateTime": "2024-06-16T05:45:24.783486Z",
+    "updatedDateTime": "2024-06-16T05:45:24.783486Z",
+    "periodIds": [],
+    "recurringTransactionConfigurationIds": [],
+    "id": {
+      "value": "00000000-0000-0000-0000-000000000000"
+    }
+  },
+  "token": "eyJhbGci...Cyk3lVK-95NHixZZa8FDE"
 }
 ```
 

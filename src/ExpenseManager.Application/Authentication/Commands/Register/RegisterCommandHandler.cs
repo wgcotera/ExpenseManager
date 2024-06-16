@@ -7,7 +7,7 @@ using MediatR;
 
 namespace ExpenseManager.Application.Authentication.Commands.Register;
 
-public class RegisterCommandHandler : 
+public class RegisterCommandHandler :
     IRequestHandler<RegisterCommand, ErrorOr<AuthenticationResult>>
 {
     private readonly IJwtTokenGenerator _jwtTokenGenerator;
@@ -28,11 +28,16 @@ public class RegisterCommandHandler :
         // 1. Validate the user doesn't exist
         if (_userRepository.GetUserByEmail(command.Email) is not null)
         {
-            return Domain.Common.DomainErrors.Errors.User.DuplicateEmail; 
+            return Domain.Common.DomainErrors.Errors.User.DuplicateEmail;
         }
 
         // 2. Create user (generate unique ID) & Persist to DB
-        var user = User.Create(command.FirstName, command.LastName, command.UserName, command.Email, command.Password);
+        var user = User.Create(
+            command.FirstName,
+            command.LastName,
+            command.UserName,
+            command.Email,
+            command.Password);
 
         _userRepository.Add(user);
 

@@ -1,6 +1,6 @@
 namespace ExpenseManager.Contracts.Authentication;
 public record AuthenticationResponse(
-    string Id,
+    Guid Id,
     string FirstName,
     string LastName,
     string UserName,
