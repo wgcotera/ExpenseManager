@@ -1,6 +1,6 @@
 using ErrorOr;
+using ExpenseManager.Domain.Common.Authentication;
 using MediatR;
-using ExpenseManager.Domain.Common;
 
 namespace ExpenseManager.Application.Authentication.Commands.Register;
 

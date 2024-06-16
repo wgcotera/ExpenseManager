@@ -1,0 +1,17 @@
+using ExpenseManager.Application.Authentication.Commands.Register;
+using ExpenseManager.Contracts.Authentication;
+using ExpenseManager.Domain.Common.Authentication;
+using Mapster;
+
+namespace ExpenseManager.Api.Common.Mapping;
+public class AuthenticationMappingConfiguration : IRegister
+{
+    public void Register(TypeAdapterConfig config)
+    {
+        config.NewConfig<RegisterRequest, RegisterCommand>();
+
+        config.NewConfig<AuthenticationResult, AuthenticationResponse>()
+            // .Map(dest => dest.Id, src => src.User.Id.Value.ToString())
+            .Map(dest => dest, src => src.User);
+    }
+}

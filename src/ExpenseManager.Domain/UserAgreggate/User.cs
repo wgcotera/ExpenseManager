@@ -11,7 +11,7 @@ public class User : AggregateRoot<UserId>
 
     public string FirstName { get; }
     public string LastName { get; }
-    public string Username { get; }
+    public string UserName { get; }
     public string Email { get; }
     public string Password { get; }
 
@@ -22,18 +22,18 @@ public class User : AggregateRoot<UserId>
     public IReadOnlyList<RecurringTransactionConfigurationId> RecurringTransactionConfigurationIds => _recurringTransactionConfigurationIds.AsReadOnly();
 
     private User(
-        UserId userId,
         string firstName,
         string lastName,
         string username,
         string email,
         string password,
         DateTime createdDateTime,
-        DateTime updatedDateTime) : base(userId)
+        DateTime updatedDateTime,
+        UserId? userId = null) : base(userId ?? UserId.CreateUnique())
     {
         FirstName = firstName;
         LastName = lastName;
-        Username = username;
+        UserName = username;
         Email = email;
         Password = password;
         CreatedDateTime = createdDateTime;
@@ -48,7 +48,6 @@ public class User : AggregateRoot<UserId>
         string password)
     {
         return new User(
-            UserId.CreateUnique(),
             firstName,
             lastName,
             username,

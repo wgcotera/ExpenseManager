@@ -8,7 +8,11 @@ public class UserId : ValueObject
     private UserId(Guid value) => Value = value;
 
     // static factory method
-    public static UserId CreateUnique() => new UserId(new Guid());
+    public static UserId CreateUnique()
+    {
+        UserId userId = new(Guid.NewGuid());
+        return userId;
+    }
 
     public override IEnumerable<object> GetEqualityComponents()
     {

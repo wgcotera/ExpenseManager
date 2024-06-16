@@ -1,8 +1,9 @@
 using ErrorOr;
 using ExpenseManager.Application.Common.Interfaces.Authentication;
 using ExpenseManager.Application.Common.Interfaces.Persistence;
-using ExpenseManager.Domain.Common;
+using ExpenseManager.Domain.Common.Authentication;
 using ExpenseManager.Domain.UserAggregate;
+using ExpenseManager.Domain.Common.DomainErrors;
 using MediatR;
 
 namespace ExpenseManager.Application.Authentication.Commands.Register;
@@ -28,7 +29,7 @@ public class RegisterCommandHandler :
         // 1. Validate the user doesn't exist
         if (_userRepository.GetUserByEmail(command.Email) is not null)
         {
-            return Domain.Common.DomainErrors.Errors.User.DuplicateEmail;
+            return Errors.User.DuplicateEmail;
         }
 
         // 2. Create user (generate unique ID) & Persist to DB
@@ -38,6 +39,7 @@ public class RegisterCommandHandler :
             command.UserName,
             command.Email,
             command.Password);
+
 
         _userRepository.Add(user);
 
