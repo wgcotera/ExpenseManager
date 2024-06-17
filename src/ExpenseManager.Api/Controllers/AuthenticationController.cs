@@ -27,7 +27,7 @@ public class AuthenticationController : ApiController
         var command = _mapper.Map<RegisterCommand>(request);
         ErrorOr<AuthenticationResult> authResult = await _mediator.Send(command);
         return authResult.Match<IActionResult>(
-            authResult => Ok(authResult),
+            authResult => Ok(_mapper.Map<AuthenticationResponse>(authResult)),
             errors => Problem(errors));
     }
 
@@ -37,7 +37,7 @@ public class AuthenticationController : ApiController
         var query = _mapper.Map<LoginQuery>(request);
         ErrorOr<AuthenticationResult> authResult = await _mediator.Send(query);
         return authResult.Match<IActionResult>(
-            Ok,
-            Problem);
+            authResult => Ok(_mapper.Map<AuthenticationResponse>(authResult)),
+            errors => Problem(errors));
     }
 }
