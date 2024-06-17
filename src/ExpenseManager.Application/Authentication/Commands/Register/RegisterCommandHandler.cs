@@ -2,8 +2,8 @@ using ErrorOr;
 using ExpenseManager.Application.Common.Interfaces.Authentication;
 using ExpenseManager.Application.Common.Interfaces.Persistence;
 using ExpenseManager.Domain.Common.Authentication;
-using ExpenseManager.Domain.UserAggregate;
 using ExpenseManager.Domain.Common.DomainErrors;
+using ExpenseManager.Domain.UserAggregate;
 using MediatR;
 
 namespace ExpenseManager.Application.Authentication.Commands.Register;

@@ -1,5 +1,6 @@
 using ErrorOr;
 using ExpenseManager.Application.Authentication.Commands.Register;
+using ExpenseManager.Application.Authentication.Queries.Login;
 using ExpenseManager.Contracts.Authentication;
 using ExpenseManager.Domain.Common.Authentication;
 using MapsterMapper;
@@ -31,8 +32,12 @@ public class AuthenticationController : ApiController
     }
 
     [HttpPost("login")]
-    public IActionResult Login(LoginRequest request)
+    public async Task<IActionResult> Login(LoginRequest request)
     {
-        return Ok(request);
+        var query = _mapper.Map<LoginQuery>(request);
+        ErrorOr<AuthenticationResult> authResult = await _mediator.Send(query);
+        return authResult.Match<IActionResult>(
+            Ok,
+            Problem);
     }
 }

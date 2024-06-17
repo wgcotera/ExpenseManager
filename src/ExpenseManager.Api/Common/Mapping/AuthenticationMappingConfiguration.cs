@@ -1,4 +1,5 @@
 using ExpenseManager.Application.Authentication.Commands.Register;
+using ExpenseManager.Application.Authentication.Queries.Login;
 using ExpenseManager.Contracts.Authentication;
 using ExpenseManager.Domain.Common.Authentication;
 using Mapster;
@@ -9,6 +10,7 @@ public class AuthenticationMappingConfiguration : IRegister
     public void Register(TypeAdapterConfig config)
     {
         config.NewConfig<RegisterRequest, RegisterCommand>();
+        config.NewConfig<LoginRequest, LoginQuery>();
 
         config.NewConfig<AuthenticationResult, AuthenticationResponse>()
             // .Map(dest => dest.Id, src => src.User.Id.Value.ToString())
