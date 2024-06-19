@@ -1,5 +1,11 @@
 @host=http://localhost:5295
 @userId=7879c745-448c-425b-9375-de9f1db871ce
 @token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3ODc5Yzc0NS00NDhjLTQyNWItOTM3NS1kZTlmMWRiODcxY2UiLCJnaXZlbl9uYW1lIjoiQm9iYnkiLCJmYW1pbHlfbmFtZSI6IlRhYmxlcyIsImp0aSI6ImZmMmQ2MzVmLTYwY2UtNDk3Ni1iNDRjLTI2YjcyMDU4YjlkMyIsImV4cCI6MTcxODc3NDQzMSwiaXNzIjoiRXhwZW5zZU1hbmFnZXIiLCJhdWQiOiJFeHBlbnNlTWFuYWdlclVzZXIifQ.iSeJOn7FrhpxrXCASQM1JTnCbJqDTWPBaTl27d5yhzU
+POST {{host}}/users/{{userId}}/periods
+Content-Type: application/json
 Authorization: Bearer {{token}}
-GET {{host}}/users/{{userId}}/periods
+
+{
+    "startDate": "2024-01-01",
+    "endDate": "2024-01-05"
+}

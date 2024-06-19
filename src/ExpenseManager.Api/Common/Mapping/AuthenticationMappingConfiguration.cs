@@ -2,6 +2,7 @@ using ExpenseManager.Application.Authentication.Commands.Register;
 using ExpenseManager.Application.Authentication.Queries.Login;
 using ExpenseManager.Contracts.Authentication;
 using ExpenseManager.Domain.Common.Authentication;
+
 using Mapster;
 
 namespace ExpenseManager.Api.Common.Mapping;
@@ -13,7 +14,7 @@ public class AuthenticationMappingConfiguration : IRegister
         config.NewConfig<LoginRequest, LoginQuery>();
 
         config.NewConfig<AuthenticationResult, AuthenticationResponse>()
-            // .Map(dest => dest.Id, src => src.User.Id.Value.ToString())
+            .Map(dest => dest.Id, src => src.User.Id.Value.ToString())
             .Map(dest => dest, src => src.User);
     }
 }

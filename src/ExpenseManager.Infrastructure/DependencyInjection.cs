@@ -1,10 +1,13 @@
 using System.Text;
+
 using ExpenseManager.Application.Common.Interfaces.Authentication;
 using ExpenseManager.Application.Common.Interfaces.Persistence;
 using ExpenseManager.Application.Common.Interfaces.Services;
 using ExpenseManager.Infrastructure.Authentication;
+using ExpenseManager.Infrastructure.Persistance;
 using ExpenseManager.Infrastructure.Persistence;
 using ExpenseManager.Infrastructure.Services;
+
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,9 +22,20 @@ public static class DependencyInjection
         this IServiceCollection services,
         ConfigurationManager configuration)
     {
-        services.AddAuth(configuration);
+        services
+            .AddAuth(configuration)
+            .AddPersistance();
+
         services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
+        return services;
+    }
+
+    public static IServiceCollection AddPersistance(
+        this IServiceCollection services)
+    {
+
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IPeriodRepository, PeriodRepository>();
         return services;
     }
 

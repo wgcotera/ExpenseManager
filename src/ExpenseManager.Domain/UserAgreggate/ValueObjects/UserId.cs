@@ -1,4 +1,4 @@
-using BuberDinner.Domain.Common.Models;
+using ExpenseManager.Domain.Common.Models;
 
 namespace ExpenseManager.Domain.UserAggregate.ValueObjects;
 public class UserId : ValueObject

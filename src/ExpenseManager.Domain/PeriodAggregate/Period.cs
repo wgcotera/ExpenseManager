@@ -1,6 +1,7 @@
 using ExpenseManager.Domain.Common.Models;
 using ExpenseManager.Domain.PeriodAggregate.ValueObjects;
 using ExpenseManager.Domain.TransactionAggregate.ValueObjects;
+using ExpenseManager.Domain.UserAggregate.ValueObjects;
 
 namespace ExpenseManager.Domain.PeriodAggregate;
 public class Period : AggregateRoot<PeriodId>

@@ -1,4 +1,4 @@
-using BuberDinner.Domain.Common.Models;
+using ExpenseManager.Domain.Common.Models;
 
 namespace ExpenseManager.Domain.TransactionAggregate.ValueObjects;
 public class TransactionId : ValueObject

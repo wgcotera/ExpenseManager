@@ -10,5 +10,10 @@ public static partial class Errors
             code: "User.DuplicateEmail",
             description: "Email is already in use."
         );
+
+        public static Error InvalidUserId => Error.Validation(
+            code: "User.InvalidUserId",
+            description: "User ID is invalid."
+        );
     }
 }
