@@ -1,3 +1,4 @@
+using ExpenseManager.Application.Authentication.Queries.ListPeriods;
 using ExpenseManager.Application.Periods.Commands.CreatePeriod;
 using ExpenseManager.Contracts.Periods;
 using ExpenseManager.Domain.Common.DomainErrors;
@@ -38,5 +39,20 @@ public class PeriodsController : ApiController
             errors => Problem(errors)
         );
 
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> ListPeriods(
+        string userId)
+    {
+        await Task.CompletedTask;
+
+        var query = _mapper.Map<ListPeriodsQuery>(userId);
+        var listPeriodsResult = await _mediator.Send(query);
+
+        return listPeriodsResult.Match(
+            periods => Ok(_mapper.Map<IEnumerable<PeriodResponse>>(periods)),
+            errors => Problem(errors)
+        );
     }
 }

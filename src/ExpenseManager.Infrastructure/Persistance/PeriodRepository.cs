@@ -1,5 +1,6 @@
 using ExpenseManager.Application.Common.Interfaces.Persistence;
 using ExpenseManager.Domain.PeriodAggregate;
+using ExpenseManager.Domain.UserAggregate.ValueObjects;
 
 namespace ExpenseManager.Infrastructure.Persistance;
 public class PeriodRepository : IPeriodRepository
@@ -11,8 +12,9 @@ public class PeriodRepository : IPeriodRepository
         _periods.Add(period);
     }
 
-    public List<Period> GetAll()
+    public List<Period> GetByUserId(UserId userId)
     {
-        return _periods;
+        return _periods.FindAll(p => p.UserId == userId);
     }
+
 }
