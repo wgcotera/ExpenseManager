@@ -13,6 +13,11 @@ public class PeriodId : ValueObject
         return periodId;
     }
 
+    public static PeriodId Create(string periodId)
+    {
+        return new PeriodId(Guid.Parse(periodId));
+    }
+
     public override IEnumerable<object> GetEqualityComponents()
     {
         yield return Value;

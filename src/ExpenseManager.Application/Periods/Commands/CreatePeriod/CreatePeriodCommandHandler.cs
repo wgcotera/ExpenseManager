@@ -1,6 +1,7 @@
 using ErrorOr;
 using ExpenseManager.Application.Common.Interfaces.Persistence;
 using ExpenseManager.Domain.PeriodAggregate;
+using ExpenseManager.Domain.UserAggregate.ValueObjects;
 
 using MediatR;
 
@@ -19,6 +20,7 @@ public class CreatePeriodCommandHandler : IRequestHandler<CreatePeriodCommand, E
 
         // Create a new period
         var period = Period.Create(
+            userId: UserId.Create(command.UserId),
             startDate: command.StartDate,
             endDate: command.EndDate
         );

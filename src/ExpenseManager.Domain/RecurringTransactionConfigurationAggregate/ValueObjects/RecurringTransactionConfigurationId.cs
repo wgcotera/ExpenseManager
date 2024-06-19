@@ -15,6 +15,11 @@ public class RecurringTransactionConfigurationId : ValueObject
         return recurringTransactionConfigurationId;
     }
 
+    public static RecurringTransactionConfigurationId Create(string recurringTransactionConfigurationId)
+    {
+        return new RecurringTransactionConfigurationId(Guid.Parse(recurringTransactionConfigurationId));
+    }
+
     public override IEnumerable<object> GetEqualityComponents()
     {
         yield return Value;

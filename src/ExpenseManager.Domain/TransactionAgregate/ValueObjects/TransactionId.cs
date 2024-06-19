@@ -14,6 +14,11 @@ public class TransactionId : ValueObject
         return transactionId; 
     } 
 
+    public static TransactionId Create(string transactionId)
+    {
+        return new TransactionId(Guid.Parse(transactionId));
+    }
+
     public override IEnumerable<object> GetEqualityComponents()
     {
         yield return Value;
