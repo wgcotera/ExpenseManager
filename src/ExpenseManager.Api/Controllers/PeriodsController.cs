@@ -25,17 +25,18 @@ public class PeriodsController : ApiController
 
     [HttpPost]
     public async Task<IActionResult> CreatePeriod(
-        [FromRoute] string userId,
-        [FromBody] CreatePeriodRequest request)
+        string userId,
+        CreatePeriodRequest request)
     {
         await Task.CompletedTask;
-
-        var command = _mapper.Map<CreatePeriodCommand>(request);
+    
+        var command = _mapper.Map<CreatePeriodCommand>((request, userId));
         var createPeriodResult = await _mediator.Send(command);
 
         return createPeriodResult.Match(
             period => Ok(_mapper.Map<PeriodResponse>(period)),
             errors => Problem(errors)
         );
+
     }
 }

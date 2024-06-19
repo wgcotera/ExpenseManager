@@ -1,6 +1,5 @@
 using ErrorOr;
 using ExpenseManager.Application.Common.Interfaces.Persistence;
-using ExpenseManager.Domain.UserAggregate.ValueObjects;
 using ExpenseManager.Domain.PeriodAggregate;
 
 using MediatR;

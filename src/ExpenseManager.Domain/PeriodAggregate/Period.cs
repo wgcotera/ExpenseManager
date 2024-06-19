@@ -17,11 +17,11 @@ public class Period : AggregateRoot<PeriodId>
     public IReadOnlyList<TransactionId> TransactionIds => _transactionIds.AsReadOnly();
 
     private Period(
-        PeriodId periodId,
         DateTime startDate,
         DateTime endDate,
         DateTime createdDateTime,
-        DateTime updatedDateTime) : base(periodId)
+        DateTime updatedDateTime,
+        PeriodId? periodId = null) : base(periodId ?? PeriodId.CreateUnique())
     {
         StartDate = startDate;
         EndDate = endDate;
@@ -34,7 +34,6 @@ public class Period : AggregateRoot<PeriodId>
         DateTime endDate)
     {
         return new Period(
-            PeriodId.CreateUnique(),
             startDate,
             endDate,
             DateTime.UtcNow,

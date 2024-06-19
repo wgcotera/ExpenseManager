@@ -6,8 +6,8 @@ using ExpenseManager.Domain.UserAggregate.ValueObjects;
 namespace ExpenseManager.Domain.UserAggregate;
 public class User : AggregateRoot<UserId>
 {
-    private List<PeriodId> _periodIds = new();
-    private List<RecurringTransactionConfigurationId> _recurringTransactionConfigurationIds = new();
+    private readonly List<PeriodId> _periodIds = new();
+    private readonly List<RecurringTransactionConfigurationId> _recurringTransactionConfigurationIds = new();
 
     public string FirstName { get; }
     public string LastName { get; }
