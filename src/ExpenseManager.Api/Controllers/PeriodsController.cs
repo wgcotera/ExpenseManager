@@ -1,8 +1,6 @@
 using ExpenseManager.Application.Authentication.Queries.ListPeriods;
 using ExpenseManager.Application.Periods.Commands.CreatePeriod;
 using ExpenseManager.Contracts.Periods;
-using ExpenseManager.Domain.Common.DomainErrors;
-using ExpenseManager.Domain.PeriodAggregate;
 
 using MapsterMapper;
 
@@ -30,7 +28,7 @@ public class PeriodsController : ApiController
         CreatePeriodRequest request)
     {
         await Task.CompletedTask;
-    
+
         var command = _mapper.Map<CreatePeriodCommand>((request, userId));
         var createPeriodResult = await _mediator.Send(command);
 
