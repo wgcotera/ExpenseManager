@@ -2,7 +2,7 @@ using ErrorOr;
 using ExpenseManager.Application.Authentication.Commands.Register;
 using ExpenseManager.Application.Authentication.Queries.Login;
 using ExpenseManager.Contracts.Authentication;
-using ExpenseManager.Domain.Common.Authentication;
+using ExpenseManager.Application.Common.Authentication;
 using MapsterMapper;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;

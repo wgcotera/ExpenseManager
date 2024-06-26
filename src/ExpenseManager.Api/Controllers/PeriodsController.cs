@@ -24,8 +24,8 @@ public class PeriodsController : ApiController
 
     [HttpPost]
     public async Task<IActionResult> CreatePeriod(
-        string userId,
-        CreatePeriodRequest request)
+        [FromBody] CreatePeriodRequest request,
+        [FromRoute] string userId)
     {
         await Task.CompletedTask;
 

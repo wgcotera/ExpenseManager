@@ -11,8 +11,8 @@ public class TransactionId : ValueObject
     public static TransactionId CreateUnique()
     {
         TransactionId transactionId = new(Guid.NewGuid());
-        return transactionId; 
-    } 
+        return transactionId;
+    }
 
     public static TransactionId Create(string transactionId)
     {

@@ -1,6 +1,6 @@
 using ExpenseManager.Domain.UserAggregate;
 
-namespace ExpenseManager.Domain.Common.Authentication;
+namespace ExpenseManager.Application.Common.Authentication;
 
 public record AuthenticationResult(
     User User,

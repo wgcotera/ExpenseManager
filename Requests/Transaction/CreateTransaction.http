@@ -1,0 +1,18 @@
+@host=http://localhost:5295
+@userId=7879c745-448c-425b-9375-de9f1db871ce
+@periodId=7879c745-448c-425b-9375-de9f1db871ce
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjOTY5MGJkYi1iMTk4LTRlNGYtOTk3MC01YzU2MWI3YTA1MzMiLCJnaXZlbl9uYW1lIjoiQm9iYnkiLCJmYW1pbHlfbmFtZSI6IlRhYmxlcyIsImp0aSI6ImQxNmY0Nzc4LWUxMmYtNDRmMS1hYWE0LTVkYTdhZmVhZGFmYSIsImV4cCI6MTcxOTM3OTQ4NSwiaXNzIjoiRXhwZW5zZU1hbmFnZXIiLCJhdWQiOiJFeHBlbnNlTWFuYWdlclVzZXIifQ.1gdS1IwWlLqBIsiFeWIkv3RKgUL_y94STifjpA3zx4g
+
+POST {{host}}/users/{{userId}}/periods/{{periodId}}/transactions
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "transactionType": "income",
+    "amount": {
+        "value": 100,
+        "currencyCode": "USD"
+    },
+    "description": "Income from work",
+    "transactionDateTime": "2021-04-01T00:00:00",
+}

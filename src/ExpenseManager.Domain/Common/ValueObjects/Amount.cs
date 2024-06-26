@@ -5,12 +5,12 @@ namespace ExpenseManager.Domain.Common.ValueObjects;
 public sealed class Amount : ValueObject
 {
     public decimal Value { get; private set; }
-    public string Currency { get; private set; }
+    public string CurrencyCode { get; private set; }
 
     private Amount(decimal value, string currency)
     {
         Value = value;
-        Currency = currency;
+        CurrencyCode = currency;
     }
 
     public static Amount Create(decimal value, string currency)
@@ -21,6 +21,6 @@ public sealed class Amount : ValueObject
     public override IEnumerable<object> GetEqualityComponents()
     {
         yield return Value;
-        yield return Currency;
+        yield return CurrencyCode;
     }
 }

@@ -37,21 +37,12 @@ POST /auth/register
 
 ```json
 {
-  "user": {
+    "id": "c3433083-ff8b-457f-b919-24116f34ff1a",
     "firstName": "Bobby",
     "lastName": "Tables",
-    "username": "boobles",
+    "userName": "boobles",
     "email": "bobbles@example.com",
-    "password": "Amiko69!",
-    "createdDateTime": "2024-06-16T05:45:24.783486Z",
-    "updatedDateTime": "2024-06-16T05:45:24.783486Z",
-    "periodIds": [],
-    "recurringTransactionConfigurationIds": [],
-    "id": {
-      "value": "00000000-0000-0000-0000-000000000000"
-    }
-  },
-  "token": "eyJhbGci...Cyk3lVK-95NHixZZa8FDE"
+    "token": "eyJhbGciOiJIUzI1NiIsInR5...qcqX8ot9XTL3hT8"
 }
 ```
 
@@ -78,11 +69,11 @@ POST /auth/login
 
 ```json
 {
-    "id": "d89c2d9a-eb3e-4075-95ff-b920b55aa104",
+    "id": "c3433083-ff8b-457f-b919-24116f34ff1a",
     "firstName": "Bobby",
     "lastName": "Tables",
-    "userName": "bobbles",
+    "userName": "boobles",
     "email": "bobbles@example.com",
-    "token": "eyJhb..z9dqcnXoY"
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXV...NqxA06AmJFZZSevFKh_4f6Bew"
 }
 ```

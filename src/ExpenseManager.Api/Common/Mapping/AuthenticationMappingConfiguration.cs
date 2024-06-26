@@ -1,7 +1,7 @@
 using ExpenseManager.Application.Authentication.Commands.Register;
 using ExpenseManager.Application.Authentication.Queries.Login;
+using ExpenseManager.Application.Common.Authentication;
 using ExpenseManager.Contracts.Authentication;
-using ExpenseManager.Domain.Common.Authentication;
 
 using Mapster;
 

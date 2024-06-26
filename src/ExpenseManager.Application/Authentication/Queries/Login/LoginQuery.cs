@@ -1,5 +1,7 @@
 using ErrorOr;
-using ExpenseManager.Domain.Common.Authentication;
+
+using ExpenseManager.Application.Common.Authentication;
+
 using MediatR;
 
 namespace ExpenseManager.Application.Authentication.Queries.Login;
