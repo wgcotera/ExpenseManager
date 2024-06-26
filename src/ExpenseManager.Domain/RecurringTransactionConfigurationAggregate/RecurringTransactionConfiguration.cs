@@ -4,7 +4,7 @@ using ExpenseManager.Domain.Common.ValueObjects;
 using ExpenseManager.Domain.RecurringTransactionConfigurationAggregate.ValueObjects;
 using ExpenseManager.Domain.UserAggregate.ValueObjects;
 
-namespace ExpenseManager.Domain.RecurringTransactionConfiguration;
+namespace ExpenseManager.Domain.RecurringTransactionConfigurationAggregate;
 public class RecurringTransactionConfiguration : AggregateRoot<RecurringTransactionConfigurationId>
 {
     public UserId UserId { get; }

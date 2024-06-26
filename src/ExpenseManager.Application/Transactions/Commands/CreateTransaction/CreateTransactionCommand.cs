@@ -1,7 +1,7 @@
 using ErrorOr;
 
+using ExpenseManager.Application.Common;
 using ExpenseManager.Domain.Common.Enum;
-using ExpenseManager.Domain.Common.ValueObjects;
 using ExpenseManager.Domain.TransactionAggregate;
 
 using MediatR;
@@ -11,9 +11,8 @@ public record CreateTransactionCommand(
     string PeriodId,
     string? RecurringTransactionConfigurationId,
     TransactionType TransactionType,
-    TransactionAmountCommand Amount,
+    TransactionAmount Amount,
     string Description,
     DateTime TransactionDateTime
 ) : IRequest<ErrorOr<Transaction>>;
 
-public record TransactionAmountCommand(decimal Value, string CurrencyCode);

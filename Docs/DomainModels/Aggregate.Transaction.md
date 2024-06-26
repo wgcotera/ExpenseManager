@@ -15,7 +15,10 @@ class Transaction
     "periodId": { "value": "00000000-0000-0000-0000-000000000000" },
     "recurrentTransactionConfigurationId": { "value": "00000000-0000-0000-0000-000000000000" }, // Optional, only present if it's a recurring transaction
     "transactionType": "income", // or "expense"
-    "amount": 100.00,
+    "amount": {
+        "value": 100,
+        "currencyCode": "USD"
+    },
     "description": "Payment from SantaPriscila",
     "transactionDateTime": "2024-01-01T12:00:00.0000000Z",
     "createdDateTime": "2024-01-01T00:00:00.0000000Z",
