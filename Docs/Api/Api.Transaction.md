@@ -3,6 +3,9 @@
     - [Create Transaction](#create-transaction)
       - [Create Transaction Request](#create-transaction-request)
       - [Create Transaction Response](#create-transaction-response)
+    - [List Transactions](#list-transactions)
+      - [List Transactions Request](#list-transactions-request)
+      - [List Transactions Response](#list-transactions-response)
 
 # Domain Aggregate
 
@@ -49,4 +52,51 @@ POST /users/{userId}/periods/{periodId}
     "createdDateTime": "2024-06-26T05:01:13.644086Z",
     "updatedDateTime": "2024-06-26T05:01:13.644086Z"
 }
+```
+
+### List Transactions
+
+#### List Transactions Request
+
+```js
+GET /users/{userId}/periods/{periodId}/transactions
+```
+
+#### List Transactions Response
+
+```js
+200 Ok
+```
+
+```json
+[
+    {
+        "id": "0ae746be-6281-41ba-b74c-f4ddbcdaa302",
+        "periodId": "fa81fc26-1efc-466a-be93-f3404346b821",
+        "recurringTransactionConfigurationId": null,
+        "transactionType": "Income",
+        "amount": {
+            "value": 100,
+            "currencyCode": "USD"
+        },
+        "description": "Income from work",
+        "transactionDateTime": "2021-04-01T00:00:00",
+        "createdDateTime": "2024-06-27T02:19:41.51248Z",
+        "updatedDateTime": "2024-06-27T02:19:41.51248Z"
+    },
+    {
+        "id": "f180acc1-9564-4c3a-9e8c-0d994a4e3e04",
+        "periodId": "fa81fc26-1efc-466a-be93-f3404346b821",
+        "recurringTransactionConfigurationId": null,
+        "transactionType": "Expense",
+        "amount": {
+            "value": 69,
+            "currencyCode": "USD"
+        },
+        "description": "Shoes on Amazon",
+        "transactionDateTime": "2021-04-01T00:00:00",
+        "createdDateTime": "2024-06-27T02:20:53.303616Z",
+        "updatedDateTime": "2024-06-27T02:20:53.303616Z"
+    }
+]
 ```

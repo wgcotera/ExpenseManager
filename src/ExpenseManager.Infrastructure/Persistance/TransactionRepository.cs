@@ -1,4 +1,5 @@
 using ExpenseManager.Application.Common.Interfaces.Persistence;
+using ExpenseManager.Domain.PeriodAggregate.ValueObjects;
 using ExpenseManager.Domain.TransactionAggregate;
 
 namespace ExpenseManager.Infrastructure.Persistance;
@@ -11,8 +12,8 @@ public class TransactionRepository : ITransactionRepository
         _transactions.Add(transaction);
     }
 
-    // public List<Transaction> GetByPeriodId(PeriodId periodId)
-    // {
-    //     return _transactions.FindAll(t => t.PeriodId == periodId);
-    // }
+    public List<Transaction> GetByPeriodId(PeriodId periodId)
+    {
+        return _transactions.FindAll(t => t.PeriodId == periodId);
+    }
 }

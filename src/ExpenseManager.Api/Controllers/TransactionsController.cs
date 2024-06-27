@@ -1,4 +1,5 @@
 using ExpenseManager.Application.Transactions.Commands.CreateTransaction;
+using ExpenseManager.Application.Transactions.Queries.ListTransactions;
 using ExpenseManager.Contracts.Transactions;
 
 using MapsterMapper;
@@ -31,6 +32,19 @@ public class TransactionsController : ApiController
 
         return createTransactionResult.Match(
             transaction => Ok(_mapper.Map<TransactionResponse>(transaction)),
+            errors => Problem(errors)
+        );
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> ListTransactions(
+        [FromRoute] string periodId)
+    {
+        var query = new ListTransactionsQuery(periodId);
+        var listTransactionsResult = await _mediator.Send(query);
+
+        return listTransactionsResult.Match(
+            transactions => Ok(_mapper.Map<IEnumerable<TransactionResponse>>(transactions)),
             errors => Problem(errors)
         );
     }

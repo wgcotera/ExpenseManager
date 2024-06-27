@@ -41,7 +41,7 @@ public class PeriodsController : ApiController
 
     [HttpGet]
     public async Task<IActionResult> ListPeriods(
-        string userId)
+        [FromRoute] string userId)
     {
         await Task.CompletedTask;
 

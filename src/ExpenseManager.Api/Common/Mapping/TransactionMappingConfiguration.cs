@@ -19,5 +19,8 @@ public class TransactionMappingConfiguration : IRegister
             .Map(dest => dest.Id, src => src.Id.Value.ToString())
             .Map(dest => dest.PeriodId, src => src.PeriodId.Value.ToString())
             .Map(dest => dest.TransactionType, src => src.TransactionType.Name);
+
+        config.NewConfig<IEnumerable<Transaction>, IEnumerable<TransactionResponse>>()
+            .Map(dest => dest, src => src.Adapt<IEnumerable<TransactionResponse>>());
     }
 }
