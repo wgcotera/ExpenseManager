@@ -11,6 +11,7 @@ public record RecurringTransactionConfigurationResponse(
     DateTime StartDate,
     DateTime? EndDate,
     string Frequency,
+    List<string> TransactionIds,
     DateTime CreatedDateTime,
     DateTime UpdatedDateTime
 );

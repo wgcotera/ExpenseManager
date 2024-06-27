@@ -1,8 +1,7 @@
 using Ardalis.SmartEnum;
 
-using ExpenseManager.Domain.Common.Models;
-
 namespace ExpenseManager.Domain.RecurringTransactionConfigurationAggregate.Enums;
+
 public class Frequency : SmartEnum<Frequency>
 {
     public Frequency(string name, int value) : base(name, value)

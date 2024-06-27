@@ -32,7 +32,7 @@ public class PeriodsController : ApiController
         var command = _mapper.Map<CreatePeriodCommand>((request, userId));
         var createPeriodResult = await _mediator.Send(command);
 
-        return createPeriodResult.Match(
+        return createPeriodResult.Match<IActionResult>(
             period => Ok(_mapper.Map<PeriodResponse>(period)),
             errors => Problem(errors)
         );
@@ -48,8 +48,8 @@ public class PeriodsController : ApiController
         var query = _mapper.Map<ListPeriodsQuery>(userId);
         var listPeriodsResult = await _mediator.Send(query);
 
-        return listPeriodsResult.Match(
-            periods => Ok(_mapper.Map<IEnumerable<PeriodResponse>>(periods)),
+        return listPeriodsResult.Match<IActionResult>(
+            periods => Ok(periods.Select(period => _mapper.Map<PeriodResponse>(period))),
             errors => Problem(errors)
         );
     }

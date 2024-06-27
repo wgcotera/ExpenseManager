@@ -2,7 +2,7 @@ using ExpenseManager.Application.Common.Interfaces.Persistence;
 using ExpenseManager.Domain.PeriodAggregate.ValueObjects;
 using ExpenseManager.Domain.TransactionAggregate;
 
-namespace ExpenseManager.Infrastructure.Persistance;
+namespace ExpenseManager.Infrastructure.Persistence;
 public class TransactionRepository : ITransactionRepository
 {
     private static readonly List<Transaction> _transactions = new();

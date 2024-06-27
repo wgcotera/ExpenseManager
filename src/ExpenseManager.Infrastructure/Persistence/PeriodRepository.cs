@@ -2,7 +2,7 @@ using ExpenseManager.Application.Common.Interfaces.Persistence;
 using ExpenseManager.Domain.PeriodAggregate;
 using ExpenseManager.Domain.UserAggregate.ValueObjects;
 
-namespace ExpenseManager.Infrastructure.Persistance;
+namespace ExpenseManager.Infrastructure.Persistence;
 public class PeriodRepository : IPeriodRepository
 {
     private static readonly List<Period> _periods = new();

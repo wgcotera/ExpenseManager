@@ -4,7 +4,6 @@ using ExpenseManager.Application.Common.Interfaces.Authentication;
 using ExpenseManager.Application.Common.Interfaces.Persistence;
 using ExpenseManager.Application.Common.Interfaces.Services;
 using ExpenseManager.Infrastructure.Authentication;
-using ExpenseManager.Infrastructure.Persistance;
 using ExpenseManager.Infrastructure.Persistence;
 using ExpenseManager.Infrastructure.Services;
 
@@ -37,7 +36,8 @@ public static class DependencyInjection
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IPeriodRepository, PeriodRepository>();
         services.AddScoped<ITransactionRepository, TransactionRepository>();
-        services.AddScoped<IRecurringTransactionConfigurationRepository, RecurringTransactionConfigurationRepository>();
+        // change to AddScoped when implementing the Database-Backed Repository
+        services.AddSingleton<IRecurringTransactionConfigurationRepository, RecurringTransactionConfigurationRepository>();
         return services;
     }
 

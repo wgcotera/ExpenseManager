@@ -27,8 +27,6 @@ public class RecurringTransactionConfigurationController : ApiController
         [FromBody] CreateRecurringTransactionConfigurationRequest request,
         [FromRoute] string userId)
     {
-        await Task.CompletedTask;
-
         var command = _mapper.Map<CreateRecurringTransactionConfigurationCommand>((request, userId));
         var createRecurringTransactionConfigurationResult = await _mediator.Send(command);
 
@@ -43,14 +41,13 @@ public class RecurringTransactionConfigurationController : ApiController
     public async Task<IActionResult> ListRecurringTransactionConfigurations(
         [FromRoute] string userId)
     {
-        await Task.CompletedTask;
-
         var query = _mapper.Map<ListRecurringTransactionConfigurationsQuery>(userId);
         var listRecurringTransactionConfigurationsResult = await _mediator.Send(query);
 
         return listRecurringTransactionConfigurationsResult.Match(
-            recurringTransactionConfigurations => Ok(_mapper
-                .Map<IEnumerable<RecurringTransactionConfigurationResponse>>(recurringTransactionConfigurations)),
+            recurringTransactionConfigurations => Ok(recurringTransactionConfigurations
+                .Select(recurringTransactionConfiguration => _mapper
+                    .Map<RecurringTransactionConfigurationResponse>(recurringTransactionConfiguration))),
             errors => Problem(errors)
         );
     }

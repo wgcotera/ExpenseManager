@@ -3,11 +3,13 @@ using ExpenseManager.Domain.Common.Models;
 using ExpenseManager.Domain.Common.ValueObjects;
 using ExpenseManager.Domain.RecurringTransactionConfigurationAggregate.Enums;
 using ExpenseManager.Domain.RecurringTransactionConfigurationAggregate.ValueObjects;
+using ExpenseManager.Domain.TransactionAggregate.ValueObjects;
 using ExpenseManager.Domain.UserAggregate.ValueObjects;
 
 namespace ExpenseManager.Domain.RecurringTransactionConfigurationAggregate;
 public class RecurringTransactionConfiguration : AggregateRoot<RecurringTransactionConfigurationId>
 {
+    private readonly List<TransactionId> _transactionIds = new();
     public UserId UserId { get; }
     public TransactionType TransactionType { get; }
     public Amount Amount { get; }
@@ -15,8 +17,9 @@ public class RecurringTransactionConfiguration : AggregateRoot<RecurringTransact
 
     public DateTime StartDate { get; }
     public DateTime? EndDate { get; }
-
     public Frequency Frequency { get; }
+
+    public IReadOnlyList<TransactionId> TransactionIds => _transactionIds.AsReadOnly();
     public DateTime CreatedDateTime { get; }
     public DateTime UpdatedDateTime { get; }
 

@@ -30,7 +30,7 @@ public class TransactionsController : ApiController
         var command = _mapper.Map<CreateTransactionCommand>((request, periodId));
         var createTransactionResult = await _mediator.Send(command);
 
-        return createTransactionResult.Match(
+        return createTransactionResult.Match<IActionResult>(
             transaction => Ok(_mapper.Map<TransactionResponse>(transaction)),
             errors => Problem(errors)
         );
@@ -43,8 +43,8 @@ public class TransactionsController : ApiController
         var query = _mapper.Map<ListTransactionsQuery>(periodId);
         var listTransactionsResult = await _mediator.Send(query);
 
-        return listTransactionsResult.Match(
-            transactions => Ok(_mapper.Map<IEnumerable<TransactionResponse>>(transactions)),
+        return listTransactionsResult.Match<IActionResult>(
+            transactions => Ok(transactions.Select(transaction => _mapper.Map<TransactionResponse>(transaction))),
             errors => Problem(errors)
         );
     }

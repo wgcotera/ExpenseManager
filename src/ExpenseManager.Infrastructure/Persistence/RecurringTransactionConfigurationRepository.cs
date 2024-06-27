@@ -2,6 +2,8 @@ using ExpenseManager.Application.Common.Interfaces.Persistence;
 using ExpenseManager.Domain.RecurringTransactionConfigurationAggregate;
 using ExpenseManager.Domain.UserAggregate.ValueObjects;
 
+namespace ExpenseManager.Infrastructure.Persistence;
+
 public class RecurringTransactionConfigurationRepository : IRecurringTransactionConfigurationRepository
 {
     private readonly List<RecurringTransactionConfiguration> _recurringTransactionConfigurations = new();
