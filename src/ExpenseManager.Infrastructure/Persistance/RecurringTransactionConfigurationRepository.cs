@@ -1,5 +1,6 @@
 using ExpenseManager.Application.Common.Interfaces.Persistence;
 using ExpenseManager.Domain.RecurringTransactionConfigurationAggregate;
+using ExpenseManager.Domain.UserAggregate.ValueObjects;
 
 public class RecurringTransactionConfigurationRepository : IRecurringTransactionConfigurationRepository
 {
@@ -8,5 +9,10 @@ public class RecurringTransactionConfigurationRepository : IRecurringTransaction
     public void Add(RecurringTransactionConfiguration recurringTransactionConfiguration)
     {
         _recurringTransactionConfigurations.Add(recurringTransactionConfiguration);
+    }
+
+    public List<RecurringTransactionConfiguration> GetByUserId(UserId userId)
+    {
+        return _recurringTransactionConfigurations.FindAll(x => x.UserId == userId);
     }
 }

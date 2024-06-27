@@ -1,6 +1,7 @@
 using ExpenseManager.Domain.Common.Enum;
 using ExpenseManager.Domain.Common.Models;
 using ExpenseManager.Domain.Common.ValueObjects;
+using ExpenseManager.Domain.RecurringTransactionConfigurationAggregate.Enums;
 using ExpenseManager.Domain.RecurringTransactionConfigurationAggregate.ValueObjects;
 using ExpenseManager.Domain.UserAggregate.ValueObjects;
 

@@ -1,4 +1,5 @@
 using ExpenseManager.Application.Transactions.Commands.CreateTransaction;
+using ExpenseManager.Application.Transactions.Queries.ListTransactions;
 using ExpenseManager.Contracts.Transactions;
 using ExpenseManager.Domain.Common.Enum;
 using ExpenseManager.Domain.TransactionAggregate;
@@ -14,6 +15,9 @@ public class TransactionMappingConfiguration : IRegister
             .Map(dest => dest.PeriodId, src => src.PeriodId)
             .Map(dest => dest.TransactionType, src => TransactionType.FromName(src.Request.TransactionType))
             .Map(dest => dest, src => src.Request);
+
+        config.NewConfig<string, ListTransactionsQuery>()
+            .MapWith(src => new ListTransactionsQuery(src));
 
         config.NewConfig<Transaction, TransactionResponse>()
             .Map(dest => dest.Id, src => src.Id.Value.ToString())

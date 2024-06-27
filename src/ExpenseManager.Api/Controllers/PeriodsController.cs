@@ -14,9 +14,9 @@ namespace ExpenseManager.Api.Controllers;
 public class PeriodsController : ApiController
 {
     private readonly IMapper _mapper;
-    private readonly IMediator _mediator;
+    private readonly ISender _mediator;
 
-    public PeriodsController(IMapper mapper, IMediator mediator)
+    public PeriodsController(IMapper mapper, ISender mediator)
     {
         _mapper = mapper;
         _mediator = mediator;

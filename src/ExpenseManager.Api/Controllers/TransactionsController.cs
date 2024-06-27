@@ -16,7 +16,7 @@ public class TransactionsController : ApiController
     private readonly IMapper _mapper;
     private readonly ISender _mediator;
 
-    public TransactionsController(IMapper mapper, IMediator mediator)
+    public TransactionsController(IMapper mapper, ISender mediator)
     {
         _mapper = mapper;
         _mediator = mediator;
@@ -40,7 +40,7 @@ public class TransactionsController : ApiController
     public async Task<IActionResult> ListTransactions(
         [FromRoute] string periodId)
     {
-        var query = new ListTransactionsQuery(periodId);
+        var query = _mapper.Map<ListTransactionsQuery>(periodId);
         var listTransactionsResult = await _mediator.Send(query);
 
         return listTransactionsResult.Match(

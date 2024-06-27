@@ -5,7 +5,7 @@ using ExpenseManager.Application.Common;
 using ExpenseManager.Domain.Common.Enum;
 
 using ExpenseManager.Domain.RecurringTransactionConfigurationAggregate;
-using ExpenseManager.Domain.RecurringTransactionConfigurationAggregate.ValueObjects;
+using ExpenseManager.Domain.RecurringTransactionConfigurationAggregate.Enums;
 
 using MediatR;
 

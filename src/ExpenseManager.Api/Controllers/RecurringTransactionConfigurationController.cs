@@ -1,4 +1,5 @@
 using ExpenseManager.Application.RecurringTransactionConfigurations.Commands;
+using ExpenseManager.Application.RecurringTransactionConfigurations.Queries.ListRecurringTransactionConfigurations;
 using ExpenseManager.Contracts.RecurringTransactionConfiguration;
 
 using MapsterMapper;
@@ -13,14 +14,15 @@ namespace ExpenseManager.Api.Controllers;
 public class RecurringTransactionConfigurationController : ApiController
 {
     private readonly IMapper _mapper;
-    private readonly IMediator _mediator;
+    private readonly ISender _mediator;
 
-    public RecurringTransactionConfigurationController(IMapper mapper, IMediator mediator)
+    public RecurringTransactionConfigurationController(IMapper mapper, ISender mediator)
     {
         _mapper = mapper;
         _mediator = mediator;
     }
 
+    [HttpPost]
     public async Task<IActionResult> CreateRecurringTransactionConfiguration(
         [FromBody] CreateRecurringTransactionConfigurationRequest request,
         [FromRoute] string userId)
@@ -33,6 +35,22 @@ public class RecurringTransactionConfigurationController : ApiController
         return createRecurringTransactionConfigurationResult.Match(
             recurringTransactionConfiguration => Ok(_mapper
                 .Map<RecurringTransactionConfigurationResponse>(recurringTransactionConfiguration)),
+            errors => Problem(errors)
+        );
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> ListRecurringTransactionConfigurations(
+        [FromRoute] string userId)
+    {
+        await Task.CompletedTask;
+
+        var query = _mapper.Map<ListRecurringTransactionConfigurationsQuery>(userId);
+        var listRecurringTransactionConfigurationsResult = await _mediator.Send(query);
+
+        return listRecurringTransactionConfigurationsResult.Match(
+            recurringTransactionConfigurations => Ok(_mapper
+                .Map<IEnumerable<RecurringTransactionConfigurationResponse>>(recurringTransactionConfigurations)),
             errors => Problem(errors)
         );
     }
