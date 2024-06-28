@@ -1,30 +1,30 @@
 using ExpenseManager.Domain.Common.Enum;
 using ExpenseManager.Domain.Common.Models;
 using ExpenseManager.Domain.Common.ValueObjects;
-using ExpenseManager.Domain.RecurringTransactionConfigurationAggregate.Enums;
-using ExpenseManager.Domain.RecurringTransactionConfigurationAggregate.ValueObjects;
+using ExpenseManager.Domain.RecurringTransactionAggregate.Enums;
+using ExpenseManager.Domain.RecurringTransactionAggregate.ValueObjects;
 using ExpenseManager.Domain.TransactionAggregate.ValueObjects;
 using ExpenseManager.Domain.UserAggregate.ValueObjects;
 
-namespace ExpenseManager.Domain.RecurringTransactionConfigurationAggregate;
-public class RecurringTransactionConfiguration : AggregateRoot<RecurringTransactionConfigurationId>
+namespace ExpenseManager.Domain.RecurringTransactionAggregate;
+public class RecurringTransaction : AggregateRoot<RecurringTransactionId>
 {
     private readonly List<TransactionId> _transactionIds = new();
-    public UserId UserId { get; }
-    public TransactionType TransactionType { get; }
-    public Amount Amount { get; }
-    public string Description { get; }
+    public UserId UserId { get; private set; }
+    public TransactionType TransactionType { get; private set; }
+    public Amount Amount { get; private set; }
+    public string Description { get; private set; }
 
-    public DateTime StartDate { get; }
-    public DateTime? EndDate { get; }
-    public Frequency Frequency { get; }
+    public DateTime StartDate { get; private set; }
+    public DateTime? EndDate { get; private set; }
+    public Frequency Frequency { get; private set; }
 
     public IReadOnlyList<TransactionId> TransactionIds => _transactionIds.AsReadOnly();
-    public DateTime CreatedDateTime { get; }
-    public DateTime UpdatedDateTime { get; }
+    public DateTime CreatedDateTime { get; private set; }
+    public DateTime UpdatedDateTime { get; private set; }
 
-    private RecurringTransactionConfiguration(
-        RecurringTransactionConfigurationId recurringTransactionConfigurationId,
+    private RecurringTransaction(
+        RecurringTransactionId recurringTransactionId,
         UserId userId,
         TransactionType transactionType,
         Amount amount,
@@ -33,7 +33,7 @@ public class RecurringTransactionConfiguration : AggregateRoot<RecurringTransact
         DateTime? endDate,
         Frequency frequency,
         DateTime createdDateTime,
-        DateTime updatedDateTime) : base(recurringTransactionConfigurationId)
+        DateTime updatedDateTime) : base(recurringTransactionId)
     {
         UserId = userId;
         TransactionType = transactionType;
@@ -46,7 +46,7 @@ public class RecurringTransactionConfiguration : AggregateRoot<RecurringTransact
         UpdatedDateTime = updatedDateTime;
     }
 
-    public static RecurringTransactionConfiguration Create(
+    public static RecurringTransaction Create(
         UserId userId,
         TransactionType transactionType,
         Amount amount,
@@ -55,8 +55,8 @@ public class RecurringTransactionConfiguration : AggregateRoot<RecurringTransact
         DateTime? endDate,
         Frequency frequency)
     {
-        return new RecurringTransactionConfiguration(
-            RecurringTransactionConfigurationId.CreateUnique(),
+        return new RecurringTransaction(
+            RecurringTransactionId.CreateUnique(),
             userId,
             transactionType,
             amount,
@@ -67,4 +67,10 @@ public class RecurringTransactionConfiguration : AggregateRoot<RecurringTransact
             DateTime.UtcNow,
             DateTime.UtcNow);
     }
+
+#pragma warning disable CS8618
+    private RecurringTransaction()
+    {
+    }
+#pragma warning restore CS8618
 }

@@ -23,7 +23,7 @@ POST /auth/register
 {
     "firstName": "Bobby",
     "lastName": "Tables",
-    "userName": "bobbles",
+    "username": "bobbles",
     "email": "bobbles@example.com",
     "password": "Amiko69!" // TODO: Hash this
 }
@@ -40,7 +40,7 @@ POST /auth/register
     "id": "c3433083-ff8b-457f-b919-24116f34ff1a",
     "firstName": "Bobby",
     "lastName": "Tables",
-    "userName": "boobles",
+    "username": "boobles",
     "email": "bobbles@example.com",
     "token": "eyJhbGciOiJIUzI1NiIsInR5...qcqX8ot9XTL3hT8"
 }
@@ -72,7 +72,7 @@ POST /auth/login
     "id": "c3433083-ff8b-457f-b919-24116f34ff1a",
     "firstName": "Bobby",
     "lastName": "Tables",
-    "userName": "boobles",
+    "username": "boobles",
     "email": "bobbles@example.com",
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXV...NqxA06AmJFZZSevFKh_4f6Bew"
 }

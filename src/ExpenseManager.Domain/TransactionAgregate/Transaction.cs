@@ -2,26 +2,26 @@ using ExpenseManager.Domain.Common.Enum;
 using ExpenseManager.Domain.Common.Models;
 using ExpenseManager.Domain.Common.ValueObjects;
 using ExpenseManager.Domain.PeriodAggregate.ValueObjects;
-using ExpenseManager.Domain.RecurringTransactionConfigurationAggregate.ValueObjects;
+using ExpenseManager.Domain.RecurringTransactionAggregate.ValueObjects;
 using ExpenseManager.Domain.TransactionAggregate.ValueObjects;
 
 namespace ExpenseManager.Domain.TransactionAggregate;
 public class Transaction : AggregateRoot<TransactionId>
 {
-    public PeriodId PeriodId { get; }
-    public RecurringTransactionConfigurationId? RecurringTransactionConfigurationId { get; }
-    public TransactionType TransactionType { get; }
-    public Amount Amount { get; }
-    public string Description { get; }
-    public DateTime TransactionDateTime { get; }
+    public PeriodId PeriodId { get; private set; }
+    public RecurringTransactionId? RecurringTransactionId { get; private set; }
+    public TransactionType TransactionType { get; private set; }
+    public Amount Amount { get; private set; }
+    public string Description { get; private set; }
+    public DateTime TransactionDateTime { get; private set; }
 
-    public DateTime CreatedDateTime { get; }
-    public DateTime UpdatedDateTime { get; }
+    public DateTime CreatedDateTime { get; private set; }
+    public DateTime UpdatedDateTime { get; private set; }
 
     private Transaction(
         TransactionId transactionId,
         PeriodId periodId,
-        RecurringTransactionConfigurationId? recurringTransactionConfigurationId,
+        RecurringTransactionId? recurringTransactionId,
         TransactionType transactionType,
         Amount amount,
         string description,
@@ -30,7 +30,7 @@ public class Transaction : AggregateRoot<TransactionId>
         DateTime updatedDateTime) : base(transactionId)
     {
         PeriodId = periodId;
-        RecurringTransactionConfigurationId = recurringTransactionConfigurationId;
+        RecurringTransactionId = recurringTransactionId;
         TransactionType = transactionType;
         Amount = amount;
         Description = description;
@@ -41,7 +41,7 @@ public class Transaction : AggregateRoot<TransactionId>
 
     public static Transaction Create(
         PeriodId periodId,
-        RecurringTransactionConfigurationId? recurringTransactionConfigurationId,
+        RecurringTransactionId? recurringTransactionId,
         TransactionType transactionType,
         Amount amount,
         string description,
@@ -50,7 +50,7 @@ public class Transaction : AggregateRoot<TransactionId>
         return new Transaction(
             TransactionId.CreateUnique(),
             periodId,
-            recurringTransactionConfigurationId,
+            recurringTransactionId,
             transactionType,
             amount,
             description,
@@ -58,4 +58,10 @@ public class Transaction : AggregateRoot<TransactionId>
             DateTime.UtcNow,
             DateTime.UtcNow);
     }
+
+#pragma warning disable CS8618
+    private Transaction()
+    {
+    }
+#pragma warning restore CS8618
 }

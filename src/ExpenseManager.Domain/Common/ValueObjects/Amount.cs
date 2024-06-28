@@ -23,4 +23,10 @@ public sealed class Amount : ValueObject
         yield return Value;
         yield return CurrencyCode;
     }
+
+#pragma warning disable CS8618
+    private Amount()
+    {
+    }
+#pragma warning restore CS8618
 }

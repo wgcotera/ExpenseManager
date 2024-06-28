@@ -1,7 +1,6 @@
 using ExpenseManager.Domain.Common.Models;
 using ExpenseManager.Domain.PeriodAggregate.ValueObjects;
 using ExpenseManager.Domain.TransactionAggregate.ValueObjects;
-using ExpenseManager.Domain.UserAggregate;
 using ExpenseManager.Domain.UserAggregate.ValueObjects;
 
 namespace ExpenseManager.Domain.PeriodAggregate;
@@ -10,11 +9,11 @@ public class Period : AggregateRoot<PeriodId>
     private readonly List<TransactionId> _transactionIds = new();
 
     public UserId UserId { get; private set; }
-    public DateTime StartDate { get; }
-    public DateTime EndDate { get; }
+    public DateTime StartDate { get; private set; }
+    public DateTime EndDate { get; private set; }
 
-    public DateTime CreatedDateTime { get; }
-    public DateTime UpdatedDateTime { get; }
+    public DateTime CreatedDateTime { get; private set; }
+    public DateTime UpdatedDateTime { get; private set; }
 
     public IReadOnlyList<TransactionId> TransactionIds => _transactionIds.AsReadOnly();
 
@@ -45,4 +44,10 @@ public class Period : AggregateRoot<PeriodId>
             DateTime.UtcNow,
             DateTime.UtcNow);
     }
+
+#pragma warning disable CS8618
+    private Period()
+    {
+    }
+#pragma warning restore CS8618
 }

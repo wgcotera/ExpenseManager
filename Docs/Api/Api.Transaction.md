@@ -41,7 +41,7 @@ POST /users/{userId}/periods/{periodId}
 {
     "id": "59ea8c1f-f32b-4ad8-8a21-f89b58316c28",
     "periodId": "74a07f0f-861e-482b-92ec-b88a0508e50e",
-    "recurringTransactionConfigurationId": null,
+    "recurringTransactionId": null,
     "transactionType": "Income",
     "amount": {
         "value": 100,
@@ -73,7 +73,7 @@ GET /users/{userId}/periods/{periodId}/transactions
     {
         "id": "0ae746be-6281-41ba-b74c-f4ddbcdaa302",
         "periodId": "fa81fc26-1efc-466a-be93-f3404346b821",
-        "recurringTransactionConfigurationId": null,
+        "recurringTransactionId": null,
         "transactionType": "Income",
         "amount": {
             "value": 100,
@@ -87,7 +87,7 @@ GET /users/{userId}/periods/{periodId}/transactions
     {
         "id": "f180acc1-9564-4c3a-9e8c-0d994a4e3e04",
         "periodId": "fa81fc26-1efc-466a-be93-f3404346b821",
-        "recurringTransactionConfigurationId": null,
+        "recurringTransactionId": null,
         "transactionType": "Expense",
         "amount": {
             "value": 69,

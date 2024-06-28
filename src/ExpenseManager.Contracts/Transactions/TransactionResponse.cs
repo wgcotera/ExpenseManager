@@ -3,7 +3,7 @@ public record TransactionResponse
 (
     string Id,
     string PeriodId,
-    string? RecurringTransactionConfigurationId,
+    string? RecurringTransactionId,
     string TransactionType,
     TransactionAmount Amount,
     string Description,

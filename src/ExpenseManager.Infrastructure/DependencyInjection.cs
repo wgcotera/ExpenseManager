@@ -5,9 +5,11 @@ using ExpenseManager.Application.Common.Interfaces.Persistence;
 using ExpenseManager.Application.Common.Interfaces.Services;
 using ExpenseManager.Infrastructure.Authentication;
 using ExpenseManager.Infrastructure.Persistence;
+using ExpenseManager.Infrastructure.Persistence.Repositories;
 using ExpenseManager.Infrastructure.Services;
 
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -32,12 +34,12 @@ public static class DependencyInjection
     public static IServiceCollection AddPersistance(
         this IServiceCollection services)
     {
-
+        services.AddDbContext<ExpenseManagerDBContext>(options
+            => options.UseSqlServer("Server=localhost;Database=ExpenseManager;User Id=sa;Password=amiko123!;TrustServerCertificate=True;"));
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IPeriodRepository, PeriodRepository>();
         services.AddScoped<ITransactionRepository, TransactionRepository>();
-        // change to AddScoped when implementing the Database-Backed Repository
-        services.AddSingleton<IRecurringTransactionConfigurationRepository, RecurringTransactionConfigurationRepository>();
+        services.AddScoped<IRecurringTransactionRepository, RecurringTransactionRepository>();
         return services;
     }
 

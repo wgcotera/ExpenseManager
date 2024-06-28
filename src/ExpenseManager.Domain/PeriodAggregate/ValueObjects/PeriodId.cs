@@ -8,7 +8,8 @@ public class PeriodId : ValueObject
     private PeriodId(Guid value) => Value = value;
 
     // static factory method
-    public static PeriodId CreateUnique() {
+    public static PeriodId CreateUnique()
+    {
         PeriodId periodId = new(Guid.NewGuid());
         return periodId;
     }
@@ -16,6 +17,11 @@ public class PeriodId : ValueObject
     public static PeriodId Create(string periodId)
     {
         return new PeriodId(Guid.Parse(periodId));
+    }
+
+    public static PeriodId Create(Guid periodId)
+    {
+        return new PeriodId(periodId);
     }
 
     public override IEnumerable<object> GetEqualityComponents()

@@ -19,6 +19,11 @@ public class UserId : ValueObject
         return new UserId(Guid.Parse(userId));
     }
 
+    public static UserId Create(Guid userId)
+    {
+        return new UserId(userId);
+    }
+
     public override IEnumerable<object> GetEqualityComponents()
     {
         yield return Value;

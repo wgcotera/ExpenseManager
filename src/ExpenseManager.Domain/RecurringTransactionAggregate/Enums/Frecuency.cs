@@ -1,6 +1,6 @@
 using Ardalis.SmartEnum;
 
-namespace ExpenseManager.Domain.RecurringTransactionConfigurationAggregate.Enums;
+namespace ExpenseManager.Domain.RecurringTransactionAggregate.Enums;
 
 public class Frequency : SmartEnum<Frequency>
 {

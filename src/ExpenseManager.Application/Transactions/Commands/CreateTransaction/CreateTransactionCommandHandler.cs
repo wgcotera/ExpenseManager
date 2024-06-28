@@ -4,7 +4,7 @@ using ErrorOr;
 using ExpenseManager.Application.Common.Interfaces.Persistence;
 using ExpenseManager.Domain.Common.ValueObjects;
 using ExpenseManager.Domain.PeriodAggregate.ValueObjects;
-using ExpenseManager.Domain.RecurringTransactionConfigurationAggregate.ValueObjects;
+using ExpenseManager.Domain.RecurringTransactionAggregate.ValueObjects;
 using ExpenseManager.Domain.TransactionAggregate;
 
 using MediatR;
@@ -24,8 +24,8 @@ public class CreateTransactionCommandHandler : IRequestHandler<CreateTransaction
 
         var transaction = Transaction.Create(
             periodId: PeriodId.Create(command.PeriodId),
-            recurringTransactionConfigurationId: command.RecurringTransactionConfigurationId != null
-                ? RecurringTransactionConfigurationId.Create(command.RecurringTransactionConfigurationId)
+            recurringTransactionId: command.RecurringTransactionId != null
+                ? RecurringTransactionId.Create(command.RecurringTransactionId)
                 : null,
             transactionType: command.TransactionType,
             amount: Amount.Create(command.Amount.Value, command.Amount.CurrencyCode),

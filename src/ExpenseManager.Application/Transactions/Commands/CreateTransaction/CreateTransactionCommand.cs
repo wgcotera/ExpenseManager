@@ -9,7 +9,7 @@ using MediatR;
 namespace ExpenseManager.Application.Transactions.Commands.CreateTransaction;
 public record CreateTransactionCommand(
     string PeriodId,
-    string? RecurringTransactionConfigurationId,
+    string? RecurringTransactionId,
     TransactionType TransactionType,
     TransactionAmount Amount,
     string Description,

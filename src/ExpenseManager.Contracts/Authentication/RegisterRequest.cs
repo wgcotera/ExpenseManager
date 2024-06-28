@@ -2,6 +2,6 @@ namespace ExpenseManager.Contracts.Authentication;
 public record RegisterRequest(
     string FirstName,
     string LastName,
-    string UserName,
+    string Username,
     string Email,
     string Password);

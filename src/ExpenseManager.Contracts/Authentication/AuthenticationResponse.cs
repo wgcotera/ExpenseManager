@@ -3,6 +3,6 @@ public record AuthenticationResponse(
     string Id,
     string FirstName,
     string LastName,
-    string UserName,
+    string Username,
     string Email,
     string Token);

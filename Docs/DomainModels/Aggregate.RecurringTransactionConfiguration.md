@@ -1,9 +1,9 @@
 # Domain Aggregates
 
-### RecurringTransactionConfiguration
+### RecurringTransaction
 
 ```csharp
-class RecurringTransactionConfiguration
+class RecurringTransaction
 {
     // TODO: Add methods
 }
