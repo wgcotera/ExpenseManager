@@ -15,5 +15,10 @@ public static partial class Errors
             code: "User.InvalidUserId",
             description: "User ID is invalid."
         );
+
+        public static Error NotFound => Error.NotFound(
+            code: "User.UserNotFound",
+            description: "User not found."
+        );
     }
 }

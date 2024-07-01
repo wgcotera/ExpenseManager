@@ -1,13 +1,13 @@
 using ExpenseManager.Domain.Common.Models;
+using ExpenseManager.Domain.Common.Models.Identities;
 
 namespace ExpenseManager.Domain.UserAggregate.ValueObjects;
-public class UserId : ValueObject
+public class UserId : AggregateRootId<Guid>
 {
-    public Guid Value { get; }
+    private UserId(Guid value) : base(value)
+    {
+    }
 
-    private UserId(Guid value) => Value = value;
-
-    // static factory method
     public static UserId CreateUnique()
     {
         UserId userId = new(Guid.NewGuid());

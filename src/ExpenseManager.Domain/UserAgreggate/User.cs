@@ -4,7 +4,7 @@ using ExpenseManager.Domain.RecurringTransactionAggregate.ValueObjects;
 using ExpenseManager.Domain.UserAggregate.ValueObjects;
 
 namespace ExpenseManager.Domain.UserAggregate;
-public class User : AggregateRoot<UserId>
+public class User : AggregateRoot<UserId, Guid>
 {
     private readonly List<PeriodId> _periodIds = new();
     private readonly List<RecurringTransactionId> _recurringTransactionIds = new();
@@ -55,6 +55,16 @@ public class User : AggregateRoot<UserId>
             password,
             DateTime.UtcNow,
             DateTime.UtcNow);
+    }
+
+    public void AddPeriodId(PeriodId periodId)
+    {
+        _periodIds.Add(periodId);
+    }
+
+    public void AddRecurringTransactionId(RecurringTransactionId recurringTransactionId)
+    {
+        _recurringTransactionIds.Add(recurringTransactionId);
     }
 
 #pragma warning disable CS8618

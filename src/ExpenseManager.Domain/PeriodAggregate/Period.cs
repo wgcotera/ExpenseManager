@@ -4,7 +4,7 @@ using ExpenseManager.Domain.TransactionAggregate.ValueObjects;
 using ExpenseManager.Domain.UserAggregate.ValueObjects;
 
 namespace ExpenseManager.Domain.PeriodAggregate;
-public class Period : AggregateRoot<PeriodId>
+public class Period : AggregateRoot<PeriodId, Guid>
 {
     private readonly List<TransactionId> _transactionIds = new();
 
@@ -43,6 +43,11 @@ public class Period : AggregateRoot<PeriodId>
             endDate,
             DateTime.UtcNow,
             DateTime.UtcNow);
+    }
+
+    public void AddTransactionId(TransactionId id)
+    {
+        _transactionIds.Add(id);
     }
 
 #pragma warning disable CS8618

@@ -1,5 +1,3 @@
-
-
 using ExpenseManager.Domain.Common.Enum;
 using ExpenseManager.Domain.RecurringTransactionAggregate;
 using ExpenseManager.Domain.RecurringTransactionAggregate.Enums;
@@ -29,6 +27,8 @@ public class RecurringTrasactionConfiguration : IEntityTypeConfiguration<Recurri
                 .HasColumnName("TransactionId")
                 .ValueGeneratedNever();
         });
+        builder.Metadata.FindNavigation(nameof(RecurringTransaction.TransactionIds))!
+            .SetPropertyAccessMode(PropertyAccessMode.Field);
     }
 
     private void ConfigureRecurringTransactionTable(EntityTypeBuilder<RecurringTransaction> builder)

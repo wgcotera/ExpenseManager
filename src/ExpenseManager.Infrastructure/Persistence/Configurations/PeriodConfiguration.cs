@@ -1,8 +1,5 @@
-
-
 using ExpenseManager.Domain.PeriodAggregate;
 using ExpenseManager.Domain.PeriodAggregate.ValueObjects;
-using ExpenseManager.Domain.UserAggregate;
 using ExpenseManager.Domain.UserAggregate.ValueObjects;
 
 using Microsoft.EntityFrameworkCore;
@@ -28,6 +25,8 @@ public class PeriodConfiguration : IEntityTypeConfiguration<Period>
                 .HasColumnName("TransactionId")
                 .ValueGeneratedNever();
         });
+        builder.Metadata.FindNavigation(nameof(Period.TransactionIds))!
+            .SetPropertyAccessMode(PropertyAccessMode.Field);
     }
 
     private void ConfigurePeriodTable(EntityTypeBuilder<Period> builder)

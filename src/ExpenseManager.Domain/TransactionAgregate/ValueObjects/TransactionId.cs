@@ -1,11 +1,12 @@
-using ExpenseManager.Domain.Common.Models;
+using ExpenseManager.Domain.Common.Models.Identities;
 
 namespace ExpenseManager.Domain.TransactionAggregate.ValueObjects;
-public class TransactionId : ValueObject
+public class TransactionId : AggregateRootId<Guid>
 {
-    public Guid Value { get; }
 
-    private TransactionId(Guid value) => Value = value;
+    private TransactionId(Guid value) : base(value)
+    {
+    }
 
     // static factory method
     public static TransactionId CreateUnique()

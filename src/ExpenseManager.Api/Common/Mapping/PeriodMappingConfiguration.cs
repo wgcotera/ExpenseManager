@@ -18,8 +18,8 @@ public class PeriodMappingConfiguration : IRegister
             .MapWith(src => new ListPeriodsQuery(src));
 
         config.NewConfig<Period, PeriodResponse>()
-            .Map(dest => dest.Id, src => src.Id.Value)
-            .Map(dest => dest.UserId, src => src.UserId.Value)
+            .Map(dest => dest.Id, src => src.Id.Value.ToString())
+            .Map(dest => dest.UserId, src => src.UserId.Value.ToString())
             .Map(dest => dest.TransactionIds, src => src.TransactionIds.Select(transactionId => transactionId.Value));
     }
 }

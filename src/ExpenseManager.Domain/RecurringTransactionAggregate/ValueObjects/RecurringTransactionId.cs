@@ -1,12 +1,14 @@
 using ExpenseManager.Domain.Common.Models;
+using ExpenseManager.Domain.Common.Models.Identities;
 
 namespace ExpenseManager.Domain.RecurringTransactionAggregate.ValueObjects;
 
-public class RecurringTransactionId : ValueObject
+public class RecurringTransactionId : AggregateRootId<Guid>
 {
-    public Guid Value { get; }
 
-    private RecurringTransactionId(Guid value) => Value = value;
+    private RecurringTransactionId(Guid value) : base(value)
+    {
+    }
 
     // static factory method
     public static RecurringTransactionId CreateUnique()

@@ -1,11 +1,12 @@
 using ExpenseManager.Domain.Common.Models;
+using ExpenseManager.Domain.Common.Models.Identities;
 
 namespace ExpenseManager.Domain.PeriodAggregate.ValueObjects;
-public class PeriodId : ValueObject
+public class PeriodId : AggregateRootId<Guid>
 {
-    public Guid Value { get; }
-
-    private PeriodId(Guid value) => Value = value;
+    private PeriodId(Guid value) : base(value)
+    {
+    }
 
     // static factory method
     public static PeriodId CreateUnique()

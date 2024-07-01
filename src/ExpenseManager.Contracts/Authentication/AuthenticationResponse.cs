@@ -5,4 +5,6 @@ public record AuthenticationResponse(
     string LastName,
     string Username,
     string Email,
+    List<string> PeriodIds,
+    List<string> RecurringTransactionIds,
     string Token);

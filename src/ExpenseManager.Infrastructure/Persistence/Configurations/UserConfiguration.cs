@@ -1,4 +1,3 @@
-
 using ExpenseManager.Domain.UserAggregate;
 using ExpenseManager.Domain.UserAggregate.ValueObjects;
 
@@ -26,6 +25,8 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
                 .HasColumnName("RecurringTransactionId")
                 .ValueGeneratedNever();
         });
+        builder.Metadata.FindNavigation(nameof(User.RecurringTransactionIds))!
+            .SetPropertyAccessMode(PropertyAccessMode.Field);
     }
 
     private void ConfigureUserPeriodIdsTable(EntityTypeBuilder<User> builder)
@@ -74,6 +75,5 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.Property(u => u.Password)
             .HasMaxLength(50)
             .IsRequired();
-
     }
 }

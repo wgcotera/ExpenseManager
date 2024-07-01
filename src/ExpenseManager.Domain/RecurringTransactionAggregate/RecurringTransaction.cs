@@ -7,7 +7,7 @@ using ExpenseManager.Domain.TransactionAggregate.ValueObjects;
 using ExpenseManager.Domain.UserAggregate.ValueObjects;
 
 namespace ExpenseManager.Domain.RecurringTransactionAggregate;
-public class RecurringTransaction : AggregateRoot<RecurringTransactionId>
+public class RecurringTransaction : AggregateRoot<RecurringTransactionId, Guid>
 {
     private readonly List<TransactionId> _transactionIds = new();
     public UserId UserId { get; private set; }
@@ -66,6 +66,11 @@ public class RecurringTransaction : AggregateRoot<RecurringTransactionId>
             frequency,
             DateTime.UtcNow,
             DateTime.UtcNow);
+    }
+
+    public void AddTransactionId(TransactionId id)
+    {
+        _transactionIds.Add(id);
     }
 
 #pragma warning disable CS8618

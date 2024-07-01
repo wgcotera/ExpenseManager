@@ -20,8 +20,8 @@ public class TransactionMappingConfiguration : IRegister
             .MapWith(src => new ListTransactionsQuery(src));
 
         config.NewConfig<Transaction, TransactionResponse>()
-            .Map(dest => dest.Id, src => src.Id.Value)
-            .Map(dest => dest.PeriodId, src => src.PeriodId.Value)
+            .Map(dest => dest.Id, src => src.Id.Value.ToString())
+            .Map(dest => dest.PeriodId, src => src.PeriodId.Value.ToString())
             .Map(dest => dest.TransactionType, src => src.TransactionType.Name);
     }
 }
