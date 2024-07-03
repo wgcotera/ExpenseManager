@@ -7,7 +7,7 @@ using ExpenseManager.Domain.TransactionAggregate.ValueObjects;
 using ExpenseManager.Domain.UserAggregate.ValueObjects;
 
 namespace ExpenseManager.Domain.RecurringTransactionAggregate;
-public class RecurringTransaction : AggregateRoot<RecurringTransactionId, Guid>
+public class RecurringTransaction : AggregateRoot<RecurringTransactionId>
 {
     private readonly List<TransactionId> _transactionIds = new();
     public UserId UserId { get; private set; }

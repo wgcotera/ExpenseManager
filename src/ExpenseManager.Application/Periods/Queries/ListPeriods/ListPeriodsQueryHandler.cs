@@ -22,7 +22,7 @@ public class ListPeriodsQueryHandler : IRequestHandler<ListPeriodsQuery, ErrorOr
     {
         await Task.CompletedTask;
 
-        UserId userId = UserId.Create(query.UserId);
+        var userId = UserId.Create(query.UserId);
         var periods = _periodRepository.GetByUserId(userId);
 
         return periods;

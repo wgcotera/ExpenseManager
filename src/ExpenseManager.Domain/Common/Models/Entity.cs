@@ -3,8 +3,8 @@ public abstract class Entity<TId> : IEquatable<Entity<TId>>, IHasDomainEvents
     where TId : ValueObject
 {
     private readonly List<IDomainEvent> _domainEvents = new();
-    public TId Id { get; protected set; }
     public IReadOnlyList<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
+    public TId Id { get; protected set; }
 
     protected Entity(TId id)
     {

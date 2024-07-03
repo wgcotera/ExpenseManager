@@ -1,11 +1,16 @@
+using ErrorOr;
+
+using ExpenseManager.Domain.Common.DomainErrors;
 using ExpenseManager.Domain.Common.Models;
-using ExpenseManager.Domain.Common.Models.Identities;
 
 namespace ExpenseManager.Domain.PeriodAggregate.ValueObjects;
-public class PeriodId : AggregateRootId<Guid>
+public class PeriodId : ValueObject
 {
-    private PeriodId(Guid value) : base(value)
+    public Guid Value { get; }
+
+    private PeriodId(Guid value)
     {
+        Value = value;
     }
 
     // static factory method
@@ -15,9 +20,9 @@ public class PeriodId : AggregateRootId<Guid>
         return periodId;
     }
 
-    public static PeriodId Create(string periodId)
+    public static PeriodId Create(string value)
     {
-        return new PeriodId(Guid.Parse(periodId));
+        return new PeriodId(Guid.Parse(value));
     }
 
     public static PeriodId Create(Guid periodId)

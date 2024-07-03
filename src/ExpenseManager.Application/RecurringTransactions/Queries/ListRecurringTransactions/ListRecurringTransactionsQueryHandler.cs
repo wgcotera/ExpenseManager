@@ -25,7 +25,7 @@ namespace ExpenseManager.Application.RecurringTransactions.Queries.ListRecurring
         {
             await Task.CompletedTask;
 
-            UserId userId = UserId.Create(query.UserId);
+            var userId = UserId.Create(query.UserId);
             var recurringTransactions = _recurringTransactionRepository.GetByUserId(userId);
 
             return recurringTransactions;

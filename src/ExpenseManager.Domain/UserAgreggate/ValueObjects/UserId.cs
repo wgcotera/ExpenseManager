@@ -1,11 +1,16 @@
+using ErrorOr;
+
+using ExpenseManager.Domain.Common.DomainErrors;
 using ExpenseManager.Domain.Common.Models;
-using ExpenseManager.Domain.Common.Models.Identities;
 
 namespace ExpenseManager.Domain.UserAggregate.ValueObjects;
-public class UserId : AggregateRootId<Guid>
+public class UserId : ValueObject
 {
-    private UserId(Guid value) : base(value)
+    public Guid Value { get; }
+
+    private UserId(Guid value)
     {
+        Value = value;
     }
 
     public static UserId CreateUnique()
@@ -14,9 +19,9 @@ public class UserId : AggregateRootId<Guid>
         return userId;
     }
 
-    public static UserId Create(string userId)
+    public static UserId Create(string value)
     {
-        return new UserId(Guid.Parse(userId));
+        return new UserId(Guid.Parse(value));
     }
 
     public static UserId Create(Guid userId)

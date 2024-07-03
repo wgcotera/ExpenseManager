@@ -6,7 +6,7 @@ using ExpenseManager.Domain.RecurringTransactionAggregate.ValueObjects;
 using ExpenseManager.Domain.TransactionAggregate.ValueObjects;
 
 namespace ExpenseManager.Domain.TransactionAggregate;
-public class Transaction : AggregateRoot<TransactionId, Guid>
+public class Transaction : AggregateRoot<TransactionId>
 {
     public PeriodId PeriodId { get; private set; }
     public RecurringTransactionId? RecurringTransactionId { get; private set; }

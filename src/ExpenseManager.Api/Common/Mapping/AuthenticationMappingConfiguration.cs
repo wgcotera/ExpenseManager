@@ -15,6 +15,8 @@ public class AuthenticationMappingConfiguration : IRegister
 
         config.NewConfig<AuthenticationResult, AuthenticationResponse>()
             .Map(dest => dest.Id, src => src.User.Id.Value.ToString())
-            .Map(dest => dest, src => src.User);
+            .Map(dest => dest, src => src.User)
+            .Map(dest => dest.PeriodIds, src => src.User.PeriodIds.Select(period => period.Value.ToString()))
+            .Map(dest => dest.RecurringTransactionIds, src => src.User.RecurringTransactionIds.Select(recurringTransactionId => recurringTransactionId.Value.ToString()));
     }
 }

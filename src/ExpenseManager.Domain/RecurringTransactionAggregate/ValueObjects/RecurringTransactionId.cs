@@ -1,15 +1,18 @@
-using ExpenseManager.Domain.Common.Models;
-using ExpenseManager.Domain.Common.Models.Identities;
+using ErrorOr;
 
+using ExpenseManager.Domain.Common.DomainErrors;
+using ExpenseManager.Domain.Common.Models;
 namespace ExpenseManager.Domain.RecurringTransactionAggregate.ValueObjects;
 
-public class RecurringTransactionId : AggregateRootId<Guid>
+public class RecurringTransactionId : ValueObject
 {
 
-    private RecurringTransactionId(Guid value) : base(value)
-    {
-    }
+    public Guid Value { get; }
 
+    private RecurringTransactionId(Guid value)
+    {
+        Value = value;
+    }
     // static factory method
     public static RecurringTransactionId CreateUnique()
     {
@@ -17,15 +20,16 @@ public class RecurringTransactionId : AggregateRootId<Guid>
         return recurringTransactionId;
     }
 
-    public static RecurringTransactionId Create(string recurringTransactionId)
+    public static RecurringTransactionId Create(string value)
     {
-        return new RecurringTransactionId(Guid.Parse(recurringTransactionId));
+        return new RecurringTransactionId(Guid.Parse(value));
     }
 
     public static RecurringTransactionId Create(Guid recurringTransactionId)
     {
         return new RecurringTransactionId(recurringTransactionId);
     }
+
     public override IEnumerable<object> GetEqualityComponents()
     {
         yield return Value;

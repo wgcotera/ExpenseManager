@@ -6,7 +6,6 @@ using ExpenseManager.Domain.UserAggregate;
 using ExpenseManager.Infrastructure.Persistence.Interceptors;
 
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 
 namespace ExpenseManager.Infrastructure.Persistence;
 public class ExpenseManagerDBContext : DbContext

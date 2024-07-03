@@ -19,7 +19,7 @@ public class PeriodMappingConfiguration : IRegister
 
         config.NewConfig<Period, PeriodResponse>()
             .Map(dest => dest.Id, src => src.Id.Value.ToString())
-            .Map(dest => dest.UserId, src => src.UserId.Value.ToString())
+            .Map(dest => dest.UserId, src => src.UserId.Value)
             .Map(dest => dest.TransactionIds, src => src.TransactionIds.Select(transactionId => transactionId.Value));
     }
 }

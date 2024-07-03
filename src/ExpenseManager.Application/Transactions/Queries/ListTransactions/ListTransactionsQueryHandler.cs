@@ -20,7 +20,7 @@ public class ListTransactionsQueryHandler : IRequestHandler<ListTransactionsQuer
     {
         await Task.CompletedTask;
 
-        PeriodId periodId = PeriodId.Create(query.PeriodId);
+        var periodId = PeriodId.Create(query.PeriodId);
         var transactions = _transactionRepository.GetByPeriodId(periodId);
 
         return transactions;
