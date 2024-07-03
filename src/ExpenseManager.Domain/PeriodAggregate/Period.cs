@@ -1,4 +1,7 @@
+using System.ComponentModel.Design;
+
 using ExpenseManager.Domain.Common.Models;
+using ExpenseManager.Domain.PeriodAggregate.Events;
 using ExpenseManager.Domain.PeriodAggregate.ValueObjects;
 using ExpenseManager.Domain.TransactionAggregate.ValueObjects;
 using ExpenseManager.Domain.UserAggregate.ValueObjects;
@@ -37,17 +40,15 @@ public class Period : AggregateRoot<PeriodId, Guid>
         DateTime startDate,
         DateTime endDate)
     {
-        return new Period(
+        var period = new Period(
             userId,
             startDate,
             endDate,
             DateTime.UtcNow,
             DateTime.UtcNow);
-    }
 
-    public void AddTransactionId(TransactionId id)
-    {
-        _transactionIds.Add(id);
+        period.AddDomainEvent(new PeriodCreated(period));
+        return period;
     }
 
 #pragma warning disable CS8618

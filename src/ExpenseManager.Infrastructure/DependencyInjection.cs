@@ -5,6 +5,7 @@ using ExpenseManager.Application.Common.Interfaces.Persistence;
 using ExpenseManager.Application.Common.Interfaces.Services;
 using ExpenseManager.Infrastructure.Authentication;
 using ExpenseManager.Infrastructure.Persistence;
+using ExpenseManager.Infrastructure.Persistence.Interceptors;
 using ExpenseManager.Infrastructure.Persistence.Repositories;
 using ExpenseManager.Infrastructure.Services;
 
@@ -36,6 +37,8 @@ public static class DependencyInjection
     {
         services.AddDbContext<ExpenseManagerDBContext>(options
             => options.UseSqlServer("Server=localhost;Database=ExpenseManager;User Id=sa;Password=amiko123!;TrustServerCertificate=True;"));
+
+        services.AddScoped<PublishDomainEventInterceptor>();
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IPeriodRepository, PeriodRepository>();
         services.AddScoped<ITransactionRepository, TransactionRepository>();

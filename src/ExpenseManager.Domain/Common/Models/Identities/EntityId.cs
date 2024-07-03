@@ -9,9 +9,9 @@ public abstract class EntityId<TId> : ValueObject
         Value = value;
     }
 
-    public override IEnumerable<object?> GetEqualityComponents()
+    public override IEnumerable<object> GetEqualityComponents()
     {
-        yield return Value;
+        yield return Value!;
     }
 
     public override string? ToString() => Value?.ToString() ?? base.ToString();

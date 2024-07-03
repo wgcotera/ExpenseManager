@@ -57,16 +57,6 @@ public class User : AggregateRoot<UserId, Guid>
             DateTime.UtcNow);
     }
 
-    public void AddPeriodId(PeriodId periodId)
-    {
-        _periodIds.Add(periodId);
-    }
-
-    public void AddRecurringTransactionId(RecurringTransactionId recurringTransactionId)
-    {
-        _recurringTransactionIds.Add(recurringTransactionId);
-    }
-
 #pragma warning disable CS8618
     private User()
     {

@@ -68,11 +68,6 @@ public class RecurringTransaction : AggregateRoot<RecurringTransactionId, Guid>
             DateTime.UtcNow);
     }
 
-    public void AddTransactionId(TransactionId id)
-    {
-        _transactionIds.Add(id);
-    }
-
 #pragma warning disable CS8618
     private RecurringTransaction()
     {
